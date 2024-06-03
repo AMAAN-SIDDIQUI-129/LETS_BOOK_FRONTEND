@@ -23,14 +23,13 @@ app.get("/api/test",async(req:Request,res:Response)=>{
 })
 app.use("/api/my/users",UserRoute)
 app.use("/api/secure",auth)
-app.listen(7000,()=>{
+app.listen(4000,()=>{
   console.log("server has intialiaze at 7000 ")
 })
 app.use(express.static(path.join(__dirname,"../../frontend/dist")))
 mongoose.connect(process.env.MONGO_DB_STRING as string).then(()=>{
   console.log("finally connectes to database")
 })
-
 
 
 
