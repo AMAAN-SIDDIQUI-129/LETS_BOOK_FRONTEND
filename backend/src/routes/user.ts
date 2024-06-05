@@ -37,7 +37,7 @@ router.post('/register',[
 
 
   })
-  return res.status(200).send({message:"User Registerd"})
+  return res.status(200)
 
 
   
