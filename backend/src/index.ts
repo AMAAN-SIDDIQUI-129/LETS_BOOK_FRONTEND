@@ -1,4 +1,4 @@
-import hotelroute from "../src/routes/Hotel"
+import hotelroute from "./routes/Hotel"
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
