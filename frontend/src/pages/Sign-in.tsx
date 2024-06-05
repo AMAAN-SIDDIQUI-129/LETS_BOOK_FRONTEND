@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { useMutation } from "react-query"
 import * as apiClient from '../api-client'
 import { toast } from "sonner"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 export type Form={
   email:string,
   password:string
@@ -60,7 +60,8 @@ const onSubmit=handleSubmit((data)=>{
         
       </div>
       <span>
-      <button  className="bg-blue-600 text-black rounded-lg border " type="submit" >Log in</button>
+        <span className="flex flex-col "> <Link to='/register' className="underline flex-col flex"> Create Account :Click here</Link></span>
+      <button  className="bg-blue-600 font-bold px-2 py-1 flex-col text-black rounded-lg border " type="submit" >Log in</button>
       </span>
       
         

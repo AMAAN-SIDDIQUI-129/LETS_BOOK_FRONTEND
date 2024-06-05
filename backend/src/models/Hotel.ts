@@ -48,12 +48,7 @@ const BookSchema=new mongoose.Schema<BookType>({
 
 
   },
-  facility:[{
-    type:String,
-    required:true,
 
-
-  }],
   type:{
     type:String,
     required:true,

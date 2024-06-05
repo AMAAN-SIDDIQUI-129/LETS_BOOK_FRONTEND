@@ -24,6 +24,7 @@ export const register=async(formdata:registerform)=>{
 }
 export const verifyToken=async()=>{
   const response=await fetch( `${API_BASE_URL}/api/secure/validate-token`,{
+    method:"GET",
     credentials:'include',
   })
   if(!response.ok){
@@ -63,5 +64,22 @@ if(!response.ok){
 }
 
   
+
+}
+ export const ToursManage=async(TourData:FormData )=>{
+  const response=await fetch(`${API_BASE_URL}/api/my-bus/Bus`,{
+    method:"POST",
+    credentials:"include",
+    
+    body:TourData,
+
+
+
+  })
+  if(!response.ok){
+    throw new Error("Badly Crashed");
+
+  }
+  return response.json()
 
 }

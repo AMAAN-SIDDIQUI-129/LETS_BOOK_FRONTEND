@@ -16,7 +16,7 @@ const upload=multer({
   }
 
 })
-router.post('/',verfiyToken,[
+router.post('/Bus',verfiyToken,[
   body("name").notEmpty().withMessage("name is must required"),
   body("city").notEmpty().withMessage("city is required"),
   body("country").notEmpty().withMessage("country is required"),
@@ -24,7 +24,6 @@ router.post('/',verfiyToken,[
   body("type").notEmpty().withMessage("type field is required"),
   body('priceperTrip').notEmpty().isNumeric().withMessage("Price per trip is required"),
   body("rating").notEmpty().withMessage("rating field is required"),
-  body("facility").notEmpty().isArray().withMessage("facility field is required")
 
 
 ],upload.array("imageFile",6),async(req:Request,res:Response)=>{

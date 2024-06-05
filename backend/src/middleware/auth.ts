@@ -1,7 +1,5 @@
-import { verify } from "crypto";
 import { Request,Response,NextFunction } from "express";
 import jwt, { JwtPayload } from 'jsonwebtoken'
-import { Interface } from "readline";
 declare global{
   namespace Express{
     interface Request{
@@ -11,7 +9,7 @@ declare global{
   
 }
 const verfiyToken=(req:Request,res:Response,next:NextFunction)=>{
-const token=req.cookies['auth_token']
+const token=req.cookies["auth_token"]
 if(!token){
   return res.status(401).json({message:"unauthorize"})
 
@@ -25,7 +23,7 @@ try{
 
 }catch(error){
   console.log(error)
-  return res.status(500).json({message:"Bad request as usual"})
+  return res.status(401).json({message:"Bad request as usual"})
 }
 
 }

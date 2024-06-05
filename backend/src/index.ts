@@ -36,7 +36,7 @@ app.get("/api/test",async(req:Request,res:Response)=>{
 app.use("/api/my/users",UserRoute)
 app.use("/api/secure",auth)
 app.use("/api/my-bus",hotelroute)
-app.listen(4000,()=>{
+app.listen(7000,()=>{
   console.log("server has intialiaze at 4000 ")
 })
 app.use(express.static(path.join(__dirname,"../../frontend/dist")))

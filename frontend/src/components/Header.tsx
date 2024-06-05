@@ -6,16 +6,7 @@ const Header = () => {
   return (
     <div className="bg-orange-500 py-6">
       <div className="container mx-auto flex justify-between">
-        {isLoggedIn?
-        (<>
-        <button className='bg-white text-black rounded-lg font-bold border '>Logout</button>
-
-
-        </>
-        ):(
-          <Link to='/register'><button className='font-bold text-black bg-white rounded-lg border'>SIGNUP</button></Link>
-
-        )}
+      
       
          
 
@@ -32,8 +23,8 @@ const Header = () => {
         {isLoggedIn?
         (<>
        
-     <Link to='/my-booking' className='justify-center items-center mt-1 space-2 text-black-50 font-bold   flex '>My Rides</Link>
-       <Link to='/my-account' className='justify-center items-center mt-1 space-2 font-bold   gap-2 flex '>MY Account</Link>
+     <Link to='/my-booking' className='justify-center items-center mt-1 space-2 text-black-50 font-bold   flex '> 🚌My Rides</Link>
+       <Link to='/my-account' className='justify-center items-center mt-1 space-2 font-bold   gap-2 flex '>👨🏻‍💼MY Account</Link>
        <SignoutButton/>
        
        

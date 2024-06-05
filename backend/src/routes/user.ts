@@ -16,7 +16,7 @@ router.post('/register',[
     res.status(400).json({message: errors.array()})
   }
   try{
-  let user=await User.findOne({email:req.body.email,})
+  let user=await User.findOne({email:req.body.email})
 
   if(user){
     res.status(401).json({message:"the Following user already exist"})
