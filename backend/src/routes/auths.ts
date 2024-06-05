@@ -37,7 +37,7 @@ router.post('/login',[
 
 
   })
-   res.status(200).json({userId:user?.id})
+   res.status(200)
 
 
 
