@@ -1,5 +1,10 @@
 import { test, expect } from '@playwright/test';
+test("Company should be fetch",async({page})=>{
+  await page.goto(`${UI_URL}my-Company`)
+  await expect(page.getByRole('heading',{name:'Company  Managment'})).toBeVisible()
+  await expect(page.locator(':has-text("sdacsadc")')).toBeVisible()
 
+})
 const UI_URL="http://localhost:5173/"
 test('should allow the user to sign-in', async ({ page }) => {
   await page.goto(UI_URL);
@@ -42,4 +47,5 @@ test('shouls allow user to register',async({page})=>{
 
 
 
-})
+});
+
