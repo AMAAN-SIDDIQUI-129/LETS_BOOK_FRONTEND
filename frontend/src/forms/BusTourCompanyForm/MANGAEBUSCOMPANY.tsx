@@ -25,7 +25,7 @@ priceperTrip:number;
 
 }
 type Props={
-  Tour:BookType
+  Tour?:BookType
   
   onSave:(TourData:FormData)=>void
   isLoading:boolean

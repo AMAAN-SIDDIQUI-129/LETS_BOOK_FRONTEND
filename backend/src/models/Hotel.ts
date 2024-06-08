@@ -38,11 +38,11 @@ const BookSchema=new mongoose.Schema<BookType>({
 
   },
   childCount:{
-    type:String,
+    type:Number,
     required:true
   },
   adultCount:{
-    type:String,
+    type:Number,
     required:true,
 
 

@@ -58,20 +58,16 @@ router.post('/Bus',verfiyToken,[
 
   }
 })
-router.get('/:id',async(req:Request,res:Response)=>{
-  const id=req.params.id.toString()
+router.get('/',verfiyToken,async(req:Request,res:Response)=>{
+ 
   try{
-    const Company=await Book.find({_id:id,
-      
-      userId:req.userId}
-
-    )
+    const Company=await Book.find({userId:req.userId})
     res.json(Company)
+
 
   }catch(error){
     console.log(error)
-    res.status(500).json({message:"bad getaway"})
+    res.status(500).json({message:"Compnay not found"})
   }
-
 })
 export default router

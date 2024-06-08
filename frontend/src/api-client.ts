@@ -1,7 +1,6 @@
 import { registerform } from "./pages/Register"
 import { Form } from "./pages/Sign-in";
 import {BookType} from '../../backend/src/shared/type'
-import { BookType } from "lucide-react";
 const API_BASE_URL=import.meta.env.VITE_API_BASE_URL || "";
 
 
@@ -85,12 +84,14 @@ if(!response.ok){
 }
 
 
-export const TourEdit=async (TourId:string):Promise<BookType[] >=>{
-const response=await fetch(`${API_BASE_URL}/api/my-bus/${TourId}`,{
-  credentials:'include'
-})
-if(!response.ok){
-  throw new Error("Error fetcing Company")
-}
-return response.json()
+export const GetCompany=async():Promise<BookType[]>=>{
+  const response=await fetch(`${API_BASE_URL}/api/my-bus/`,{
+    credentials:'include',
+
+  })
+  if(!response.ok){
+    throw new Error("not Compnay found")
+  }
+  return response.json()
+
 }

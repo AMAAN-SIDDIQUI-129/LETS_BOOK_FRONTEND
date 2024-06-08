@@ -22,8 +22,8 @@ const Header = () => {
         <span className='flex space-x-2'>
         {isLoggedIn?
         (<>
-        <Link to='/add-Tour' className='justify-center items-center mt-1 space-2 text-black-50 font-bold   flex '> 🏦Company </Link>
-     <Link to='/my-booking' className='justify-center items-center mt-1 space-2 text-black-50 font-bold   flex '> 🚌My Rides</Link>
+        <Link to='/add-Tour' className='justify-center items-center mt-1 space-2 text-black-50 font-bold   flex '> 🏦Add Company </Link>
+     <Link to='/my-Company' className='justify-center items-center mt-1 space-2 text-black-50 font-bold   flex '> 🚌My Company</Link>
        <Link to='/my-account' className='justify-center items-center mt-1 space-2 font-bold   gap-2 flex '>👨🏻‍💼MY Account</Link>
        <SignoutButton/>
        
