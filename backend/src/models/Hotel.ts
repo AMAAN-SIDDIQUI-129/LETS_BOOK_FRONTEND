@@ -1,24 +1,6 @@
 import mongoose from "mongoose";
-export type BookType={
-  _id:string
-  userId:string,
-name:string,
-city:string,
-country:string,
-description:string,
-type:string,
-adultCount:string,
-childCount:string,
-facility:string[],
-imageUrl:string[],
-lastUpdated:Date,
-priceperTrip:number,
-rating:number,
+import { BookType } from "../shared/type";
 
-
-
-
-}
 const BookSchema=new mongoose.Schema<BookType>({
   userId:{
     type:String,

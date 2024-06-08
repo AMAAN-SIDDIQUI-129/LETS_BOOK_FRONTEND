@@ -3,7 +3,9 @@ import DetailsSection from "./DetailsSection"
 import TypeBus from "./type";
 import Guest from "./Guest";
 import Image from './imagesection'
+import { useEffect } from "react";
 
+import { BookType } from "../../../../backend/src/shared/type";
 export type Bustype={
 name:string,
 city:string;
@@ -23,13 +25,17 @@ priceperTrip:number;
 
 }
 type Props={
+  Tour:BookType
+  
   onSave:(TourData:FormData)=>void
   isLoading:boolean
 }
-const MANGAEBUSCOMPANY = ({onSave,isLoading}:Props) => {
+const MANGAEBUSCOMPANY = ({onSave,isLoading,Tour}:Props) => {
   const forms =useForm<Bustype>();
-  const {handleSubmit}=forms;
-  
+  const {handleSubmit,reset}=forms;
+ useEffect(()=>{
+   reset(Tour);
+ },[reset ,Tour])
   const onSubmit=handleSubmit((formdata:Bustype)=>{
     const formData=new FormData();
     formData.append('name',formdata.name);

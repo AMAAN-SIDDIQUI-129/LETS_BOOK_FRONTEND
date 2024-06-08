@@ -2,7 +2,8 @@ import cloudinary from 'cloudinary'
 import express from "express"
 import {Request,Response} from 'express'
 import multer from 'multer'
-import Book, { BookType } from '../models/Hotel'
+import Book from '../models/Hotel'
+import {BookType} from '../shared/type'
 import {body} from 'express-validator'
 import verfiyToken from '../middleware/auth'
 const router=express.Router()
@@ -57,5 +58,20 @@ router.post('/Bus',verfiyToken,[
 
   }
 })
-export default router
+router.get('/:id',async(req:Request,res:Response)=>{
+  const id=req.params.id.toString()
+  try{
+    const Company=await Book.find({_id:id,
+      
+      userId:req.userId}
 
+    )
+    res.json(Company)
+
+  }catch(error){
+    console.log(error)
+    res.status(500).json({message:"bad getaway"})
+  }
+
+})
+export default router

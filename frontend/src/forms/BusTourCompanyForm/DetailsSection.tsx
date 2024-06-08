@@ -55,7 +55,7 @@ const DetailsSection = () => {
         <select className="font-bold w-full rounded-lg border py-1 px-2 border-black"{...register('rating',{required:"this field is required"})}>
           <option value=''>Service Rating</option>
           {[1,2,3,4,5].map((num)=>(
-            <option value={num}>{num}</option>
+            <option value={num}>⭐{num}</option>
 
           ))}
 

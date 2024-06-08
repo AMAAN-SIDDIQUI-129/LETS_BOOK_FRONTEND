@@ -1,6 +1,7 @@
 import { registerform } from "./pages/Register"
 import { Form } from "./pages/Sign-in";
-
+import {BookType} from '../../backend/src/shared/type'
+import { BookType } from "lucide-react";
 const API_BASE_URL=import.meta.env.VITE_API_BASE_URL || "";
 
 
@@ -24,7 +25,6 @@ export const register=async(formdata:registerform)=>{
 }
 export const verifyToken=async()=>{
   const response=await fetch( `${API_BASE_URL}/api/secure/validate-token`,{
-    method:"GET",
     credentials:'include',
   })
   if(!response.ok){
@@ -82,4 +82,15 @@ if(!response.ok){
   }
   return response.json()
 
+}
+
+
+export const TourEdit=async (TourId:string):Promise<BookType[] >=>{
+const response=await fetch(`${API_BASE_URL}/api/my-bus/${TourId}`,{
+  credentials:'include'
+})
+if(!response.ok){
+  throw new Error("Error fetcing Company")
+}
+return response.json()
 }

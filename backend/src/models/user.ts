@@ -1,15 +1,8 @@
 import { Schema, StringExpressionOperatorReturningBoolean } from "mongoose";
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
-export type UserType={
- _id:string
-  email: string;
+import { UserType } from "../shared/type";
 
-  password: string;
-  firstname:string;
-  lastname:string;
-
-}
 const userschema= new mongoose.Schema({
   email:{
     type:String,

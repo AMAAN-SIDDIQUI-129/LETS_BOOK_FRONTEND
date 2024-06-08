@@ -24,7 +24,7 @@ router.post('/register',[
   }
   user=new User(req.body)
   await user.save()
-  const token=jwt.sign( {userId: user.id},process.env.JWT_SECRET_KEY as string,{
+  const token=jwt.sign( {userId: user!.id},process.env.JWT_SECRET_KEY as string,{
     expiresIn:"1d"
 
 
@@ -37,7 +37,7 @@ router.post('/register',[
 
 
   })
-  return res.status(200)
+  return res.status(200).json({message:"User Register"})
 
 
   
