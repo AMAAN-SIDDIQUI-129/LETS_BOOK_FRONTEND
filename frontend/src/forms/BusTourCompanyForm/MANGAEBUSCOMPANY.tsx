@@ -14,6 +14,7 @@ description:string;
 type:string;
 rating:number;
 imageFile:FileList;
+imageUrl:string[];
 childCount:number;
 adultCount:number;
 priceperTrip:number;
@@ -25,7 +26,7 @@ priceperTrip:number;
 
 }
 type Props={
-  Tour?:BookType
+ Tour?:BookType
   
   onSave:(TourData:FormData)=>void
   isLoading:boolean
@@ -35,9 +36,12 @@ const MANGAEBUSCOMPANY = ({onSave,isLoading,Tour}:Props) => {
   const {handleSubmit,reset}=forms;
  useEffect(()=>{
    reset(Tour);
- },[reset ,Tour])
+ },[Tour ,reset])
   const onSubmit=handleSubmit((formdata:Bustype)=>{
     const formData=new FormData();
+    if(Tour){
+      formData.append('TourId',Tour._id)
+    }
     formData.append('name',formdata.name);
     formData.append('city',formdata.city);
     formData.append('country',formdata.country);
@@ -47,6 +51,11 @@ const MANGAEBUSCOMPANY = ({onSave,isLoading,Tour}:Props) => {
     formData.append('adultCount',formdata.adultCount.toString());
     formData.append('childCount',formdata.childCount.toString());
     formData.append('priceperTrip',formdata.priceperTrip.toString());
+    if(formdata.imageUrl){
+      formdata.imageUrl.forEach((url,index)=>{
+        formData.append(`imageUrl[${index}]`,url)
+      })
+    }
 
     Array.from(formdata.imageFile).forEach((imageFiles)=>{
       formData.append(`imageFile`,imageFiles)

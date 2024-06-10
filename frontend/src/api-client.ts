@@ -82,7 +82,16 @@ if(!response.ok){
   return response.json()
 
 }
+export const TourEdit=async(TourId:string):Promise<BookType>=>{
+const response=await fetch(`${API_BASE_URL}/api/my-bus/${TourId}`,{
+  credentials:'include'
 
+})
+if(!response.ok){
+  throw new Error("Compnay not found")
+}
+return response.json()
+}
 
 export const GetCompany=async():Promise<BookType[]>=>{
   const response=await fetch(`${API_BASE_URL}/api/my-bus/`,{
@@ -91,6 +100,19 @@ export const GetCompany=async():Promise<BookType[]>=>{
   })
   if(!response.ok){
     throw new Error("not Compnay found")
+  }
+  return response.json()
+
+}
+export const udateimage=async(TourData:FormData)=>{
+  const response=await fetch(`${API_BASE_URL}/api/my-bus/${TourData.get('TourId')}`,{
+    method:'PUT',
+    body:TourData,
+    credentials:'include',
+
+  });
+  if(!response.ok){
+    throw new Error("Not find")
   }
   return response.json()
 

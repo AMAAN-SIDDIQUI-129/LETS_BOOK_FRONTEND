@@ -33,14 +33,7 @@ router.post('/Bus',verfiyToken,[
   try{
 
   
-  const uploadPromise=await imageFile.map(async(image)=>{
-    const b64image=Buffer.from(image.buffer).toString('base64')
-    const dataUri="data:"+image.mimetype + ";base64,"+b64image
-    const uploadResponse=await cloudinary.v2.uploader.upload(dataUri)
-    return uploadResponse.url
-
-  })
-  const imageUrl=await Promise.all(uploadPromise)
+  const imageUrl = await uploadImages(imageFile)
   BusBook.imageUrl=imageUrl;
   BusBook.lastUpdated=new Date();
   BusBook.userId=req.userId;
@@ -70,4 +63,59 @@ router.get('/',verfiyToken,async(req:Request,res:Response)=>{
     res.status(500).json({message:"Compnay not found"})
   }
 })
+router.get('/:id',verfiyToken,async(req:Request,res:Response)=>{
+  const id=req.params.id.toString()
+  try{
+    const Company=await Book.findOne({
+      _id:id,
+      userId:req.userId,
+
+    });
+    res.json(Company)
+
+  }catch(error){
+    console.log(error)
+    res.status(501).json({message:"Compnay not found plzz register Company "})
+  }
+})
 export default router
+
+router.put('/:hotelId',verfiyToken,upload.array('imageFile'),async(req:Request,res:Response)=>{
+  try{
+    const UpdateCompnay:BookType=req.body
+    UpdateCompnay.lastUpdated=new Date();
+    const Tour=await Book.findOneAndUpdate({
+      _id:req.params.TourId,
+      userId:req.userId,
+
+    },
+    UpdateCompnay,
+    {new:true}
+  )
+  if(!Tour){
+    res.status(401).json({message:"Tour not Get"})
+  }
+  const files=req.files as Express.Multer.File[]
+  const updateimage=await uploadImages(files)
+  Tour!.imageUrl=[...updateimage, ...(UpdateCompnay.imageUrl || [])]
+
+await Tour?.save()
+res.status(201).json(Tour)
+
+  }catch(error){
+    console.log(error)
+    res.status(500).json({message:"Somethin Bad smell as usual"})
+  }
+})
+
+async function uploadImages(imageFile: Express.Multer.File[]) {
+  const uploadPromise = await imageFile.map(async (image) => {
+    const b64image = Buffer.from(image.buffer).toString('base64')
+    const dataUri = "data:" + image.mimetype + ";base64," + b64image
+    const uploadResponse = await cloudinary.v2.uploader.upload(dataUri)
+    return uploadResponse.url
+
+  })
+  const imageUrl = await Promise.all(uploadPromise)
+  return imageUrl
+}

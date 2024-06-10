@@ -58,7 +58,7 @@ return(
               </div>
           </div>
           <span className="flex justify-end ">
-            <Link to='/add-Tour' className="bg-blue-600 font-bold text-black border rounded-lg px-2  py-1 ">Detail</Link>
+            <Link to={`/add-Tour/${Tour._id}`} className="bg-blue-600 font-bold text-black border rounded-lg px-2  py-1 ">Detail</Link>
 
           </span>
 

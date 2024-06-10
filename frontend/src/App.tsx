@@ -6,6 +6,7 @@ import Signin from "./pages/Sign-in"
 import Hotel from "./pages/hotel"
 import { useAppContext } from "./context/appC"
 import Company from "./pages/GetCompnay"
+import EditCompnay from "./pages/CompanyManagment"
 const App = () => {
   const {isLoggedIn}=useAppContext()
   return (
@@ -18,6 +19,7 @@ const App = () => {
         {isLoggedIn && (<>
         <Route path="/add-Tour" element={<Layouts><Hotel/></Layouts>}/>
         <Route path="/my-Company" element={<Layouts><Company/></Layouts>}/>
+        <Route path='/add-Tour/:TourId' element={<Layouts><EditCompnay/></Layouts>}/>
 
         </>)
         }
