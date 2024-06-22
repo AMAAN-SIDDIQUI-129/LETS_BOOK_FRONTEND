@@ -5,6 +5,7 @@ import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AppContextProvider } from './context/appC.tsx';
 import { Toaster } from 'sonner';
+import { SearchContextProvider } from './context/SearchContext.tsx';
 const queryclient=new QueryClient({
     defaultOptions:{
         queries:{
@@ -18,7 +19,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
     <QueryClientProvider client={queryclient}>
         <AppContextProvider>
-            <App/>
+            <SearchContextProvider>
+                <App/>
+                
+            </SearchContextProvider>
+
             <Toaster visibleToasts={1} position="top-right" richColors/>
         </AppContextProvider>
     

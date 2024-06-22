@@ -1,6 +1,6 @@
 import { registerform } from "./pages/Register"
 import { Form } from "./pages/Sign-in";
-import {BookType} from '../../backend/src/shared/type'
+import {BookType, Tour} from '../../backend/src/shared/type'
 const API_BASE_URL=import.meta.env.VITE_API_BASE_URL || "";
 
 
@@ -115,5 +115,53 @@ export const udateimage=async(TourData:FormData)=>{
     throw new Error("Not find")
   }
   return response.json()
+
+}
+export type SearchParams={
+  destination?:string;
+  checkIn?:string;
+  checkOut?:string;
+  adultCount?:string;
+  childCount?:string;
+  page?:string;
+  rating?:string[]
+  type?:string[]
+  sortOption?:string
+  maxPrice?:string
+
+}
+export const searchcompany=async(searchparams:SearchParams):Promise<Tour>=>{
+  const queryParams=new URLSearchParams()
+  queryParams.append("destination",searchparams.destination || "")
+  queryParams.append("checkOut",searchparams.checkOut || "")
+  queryParams.append("checkIn",searchparams.checkIn || "")
+  queryParams.append("adultCount",searchparams.adultCount || "")
+  queryParams.append("childCount",searchparams.childCount || "")
+  queryParams.append("page",searchparams.page || "")
+  queryParams.append("maxPrice",searchparams.maxPrice|| '')
+  queryParams.append("sortOption",searchparams.sortOption|| '')
+  searchparams.type?.forEach((type)=>queryParams.append("types",type))
+  searchparams.rating?.forEach((star)=>queryParams.append("star",star))
+
+  
+
+
+
+  const response=await fetch(`${API_BASE_URL}/api/Tour/search?${queryParams}`
+
+
+  )
+
+  if(!response.ok){
+    throw new Error("no Search stuff not found")
+
+  }
+  return response.json()
+
+
+
+
+
+
 
 }

@@ -7,6 +7,7 @@ import { Request,Response } from 'express'
 import mongoose from 'mongoose'
 import UserRoute from './routes/user'
 import auth from './routes/auths'
+import TourRoutes from '../src/routes/Tour'
 import path from 'path'
 import {v2 as cloudinary} from 'cloudinary'
 cloudinary.config({
@@ -36,6 +37,7 @@ app.get("/api/test",async(req:Request,res:Response)=>{
 app.use("/api/my/users",UserRoute)
 app.use("/api/secure",auth)
 app.use("/api/my-bus",hotelroute)
+app.use('/api/Tour',TourRoutes)
 app.listen(7000,()=>{
   console.log("server has intialiaze at 4000 ")
 })

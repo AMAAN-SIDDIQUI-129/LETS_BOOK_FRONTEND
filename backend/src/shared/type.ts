@@ -26,3 +26,13 @@ rating:number,
 
 
 }
+export type Tour={
+  data:BookType[];
+  pagination:{
+    total:number,
+    page:number;
+    pages:number
+  }
+
+
+}
