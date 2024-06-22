@@ -43,7 +43,6 @@ router.get('/search',async(req:Request,res:Response)=>{
     res.status(501).json({message:"Something badly wrong"})
   }
 })
-export default router
 const constructQuery=(queryParams:any)=>{
   let constructQuery:any={};
   if(queryParams.destination){
@@ -84,3 +83,4 @@ const constructQuery=(queryParams:any)=>{
   }
   return constructQuery;
 }
+export default router

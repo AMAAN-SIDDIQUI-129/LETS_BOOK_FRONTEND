@@ -7,7 +7,7 @@ import { Request,Response } from 'express'
 import mongoose from 'mongoose'
 import UserRoute from './routes/user'
 import auth from './routes/auths'
-import TourRoutes from '../src/routes/Tour'
+import TourRoutes from './routes/Tour'
 import path from 'path'
 import {v2 as cloudinary} from 'cloudinary'
 cloudinary.config({
