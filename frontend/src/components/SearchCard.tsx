@@ -39,7 +39,7 @@ const SearchCard = ({Tour}:Props) => {
 
   </div>
   <div className="justify-end items-end flex mb-2">
-    <Link to={`/add-Tour/${Tour._id}`}>
+    <Link to={`/search/${Tour._id}`}>
     <button className="bg-blue-600 text-white  hover:bg-red-500 rounded-lg border font-bold px-2 py-1">Details</button>
 </Link>
 

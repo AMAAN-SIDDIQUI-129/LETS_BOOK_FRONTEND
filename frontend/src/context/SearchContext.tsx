@@ -22,12 +22,12 @@ type Props={
 
 const Search=React.createContext<Search | undefined>(undefined);
 export  const SearchContextProvider=({children}:Props)=>{
-  const [destination,setDestination]=useState<string>("")
-  const [checkIn,setCheckIn]=useState<Date>(new Date())
-  const [checkOut,setCheckOut]=useState<Date>(new Date())
-  const [childCount,setChildCount]=useState<number>(1)
-  const [adultCount,setadultCount]=useState<number>(1)
-  const [TourId,setTourId]=useState<string>('')
+  const [destination,setDestination]=useState<string>(()=>sessionStorage.getItem('destination') || (''))
+  const [checkIn,setCheckIn]=useState<Date>(()=> new Date(sessionStorage.getItem('chekIn') || new Date().toISOString()))
+  const [checkOut,setCheckOut]=useState<Date>(()=>new Date(sessionStorage.getItem("chekOut") || new Date().toISOString()))
+  const [childCount,setChildCount]=useState<number>(()=> parseInt(sessionStorage.getItem('childCount')|| '1'))
+  const [adultCount,setadultCount]=useState<number>(()=>parseInt(sessionStorage.getItem('adultCount')|| '1'))
+  const [TourId,setTourId]=useState<string>(()=>sessionStorage.getItem('TourId')|| (''))
 
   const searchvalues=(
     destination:string,
@@ -45,6 +45,17 @@ export  const SearchContextProvider=({children}:Props)=>{
     if(TourId){
       setTourId(TourId)
     }
+    sessionStorage.setItem('destination',destination)
+    sessionStorage.setItem('checkIn',checkIn.toISOString())
+    sessionStorage.setItem("checkOut",checkOut.toISOString())
+    sessionStorage.setItem('adultCount',adultCount.toString())
+    sessionStorage.setItem('childCount',childCount.toString())
+    if(TourId){
+      sessionStorage.setItem(" TourId",TourId.toString())
+    }
+
+
+
 
 
   }

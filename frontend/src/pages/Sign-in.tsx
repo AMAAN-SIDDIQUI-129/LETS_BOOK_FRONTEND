@@ -1,19 +1,23 @@
 import { useForm } from "react-hook-form"
-import { useMutation } from "react-query"
+import { useMutation, useQueryClient } from "react-query"
 import * as apiClient from '../api-client'
 import { toast } from "sonner"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 export type Form={
   email:string,
   password:string
 }
 const Signin = () => {
   const navigate=useNavigate()
+  const location=useLocation()
+  const queryClient=useQueryClient()
 const {register,formState:{errors},handleSubmit}=useForm<Form>()
 const mutation=useMutation(apiClient.signin,{
   onSuccess:async()=>{
     toast.success('Succefull done')
-    navigate('/')
+    await queryClient.invalidateQueries('validateToken')
+    navigate(location.state?.from?.pathname || "/")
+
   },
   onError:()=>{
     toast.error("Not Succefull")

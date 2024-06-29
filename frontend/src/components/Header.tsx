@@ -12,10 +12,15 @@ const Header = () => {
 
       
         
-        <div className='text-3xl font-bold tracking-tight text-white'>
-        <span>
+        <div className='text-3xl font-bold tracking-tight text-white px-2'>
+      <Link to='/'>
+      <span className='text-2xl font-thin gap-2 justify-center cursor-pointer'>🏠</span>
+
+      <span className='ml-2'>
+         
         LETS ` BOOK
        </span>
+      </Link>
         </div>
        
        

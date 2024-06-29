@@ -165,3 +165,22 @@ export const searchcompany=async(searchparams:SearchParams):Promise<Tour>=>{
 
 
 }
+export const TourbyId=async(TourId:string):Promise<BookType>=>{
+  const response=await fetch(`${API_BASE_URL}/api/Tour/${TourId}`)
+  if(!response.ok){
+    throw new Error("not fine")
+
+
+  }
+  return response.json()
+
+}
+
+export const deleted=async(TourId:string)=>{
+  const response=await fetch(`${API_BASE_URL}/bus/delete/${TourId} `)
+  if(!response.ok){
+    throw new Error("Not done Succesfully")
+
+  }
+
+}

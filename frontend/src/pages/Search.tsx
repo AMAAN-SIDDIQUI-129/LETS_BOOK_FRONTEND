@@ -77,7 +77,7 @@ const handelSaveType=(event:React.ChangeEvent<HTMLInputElement>)=>{
       <SearchCard Tour={Tour}/>
     ))}
     <div>
-      <Pagination page={TourData?.pagination.page || 1} pages={TourData?.pagination.pages|| 1} onPageChange={(page)=>setPage(page)}/>
+      <Pagination page={TourData?.pagination.page || 1} pages={TourData?.pagination.pages|| 1} onPageChange={(pages)=>setPage(pages)}/>
     </div>
     </div>
    </div>

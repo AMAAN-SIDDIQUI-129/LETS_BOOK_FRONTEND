@@ -8,6 +8,7 @@ import { useAppContext } from "./context/appC"
 import Company from "./pages/GetCompnay"
 import EditCompnay from "./pages/CompanyManagment"
 import Search from "./pages/Search"
+import Detail from "./pages/Details"
 const App = () => {
   const {isLoggedIn}=useAppContext()
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/" element={<Layouts><p>Amaan Bhaiya</p></Layouts>}></Route>
 
         <Route path="/search" element={<Layouts><Search/></Layouts>}></Route>
+        <Route path="/search/:TourId" element={<Layouts><Detail/></Layouts>}></Route>
         <Route path="/register" element={<Layouts><Register/></Layouts>}></Route>
         <Route path="/sign-in" element={<Layouts><Signin/></Layouts>}></Route>
         {isLoggedIn && (<>

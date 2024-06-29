@@ -3,6 +3,7 @@ import { Request,Response } from "express";
 import Book from "../models/Hotel";
 import { Tour } from "../shared/type";
 import verfiyToken from "../middleware/auth";
+import { param, validationResult } from "express-validator";
 const router=express.Router()
 router.get('/search',async(req:Request,res:Response)=>{
   try{
@@ -83,4 +84,25 @@ const constructQuery=(queryParams:any)=>{
   }
   return constructQuery;
 }
+router.get('/:id',[param("id").notEmpty().withMessage("id not coming out")],async(req:Request,res:Response)=>{
+  const error=validationResult(req)
+  if(!error.isEmpty()){
+    return res.status(401).json({message:"Something bad gateways"})
+
+  }
+  const id=req.params.id.toString()
+  try{
+    const Company=await Book.findById(id)
+    res.json(Company)
+    
+
+
+  }catch(error){
+    console.log(error)
+    res.status(401).json({message:"not so bad getway"})
+
+  }
+
+
+})
 export default router
