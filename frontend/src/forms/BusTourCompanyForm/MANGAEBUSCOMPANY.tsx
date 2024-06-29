@@ -11,7 +11,7 @@ name:string,
 city:string;
 country:string;
 description:string;
-type:string;
+type:string[];
 rating:number;
 imageFile:FileList;
 imageUrl:string[];
@@ -46,7 +46,6 @@ const MANGAEBUSCOMPANY = ({onSave,isLoading,Tour}:Props) => {
     formData.append('city',formdata.city);
     formData.append('country',formdata.country);
     formData.append('description',formdata.description);
-    formData.append('type',formdata.type);
     formData.append('rating',formdata.rating.toString());
     formData.append('adultCount',formdata.adultCount.toString());
     formData.append('childCount',formdata.childCount.toString());
@@ -56,6 +55,10 @@ const MANGAEBUSCOMPANY = ({onSave,isLoading,Tour}:Props) => {
         formData.append(`imageUrl[${index}]`,url)
       })
     }
+      formdata.type.forEach((facility,index)=>{
+      formData.append(`type[${index}]`,facility)
+
+    })
 
     Array.from(formdata.imageFile).forEach((imageFiles)=>{
       formData.append(`imageFile`,imageFiles)
