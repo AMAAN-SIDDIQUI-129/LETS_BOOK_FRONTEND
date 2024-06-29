@@ -57,6 +57,7 @@ const MANGAEBUSCOMPANY = ({onSave,isLoading,Tour}:Props) => {
       })
     }
     
+    
 
     Array.from(formdata.imageFile).forEach((imageFiles)=>{
       formData.append(`imageFile`,imageFiles)
