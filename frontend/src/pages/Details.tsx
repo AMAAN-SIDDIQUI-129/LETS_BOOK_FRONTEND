@@ -27,12 +27,7 @@ const Detail=()=>{
         <div className="gap-2  flex justify-between mt-2 font-bold ">
           <span className="text-3xl font bold">{Tour.name}</span>
          <div>
-          {Tour.type.map((type)=>(
-        <div className="rounded-lg border p-1  border-orange-600 ">
-          🔴{type}
-        </div>
-        
-       ))}
+         
        </div>
 
         </div>
